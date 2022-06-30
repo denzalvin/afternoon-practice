@@ -3,14 +3,18 @@
 #Problem 1
 #Create a generator, primes_gen that generates prime numbers starting from 2.
 def primes_gen():
-    yield 2
-    yield from _primes_gen(3)
-
-
-gen = primes_gen()
-for _ in range(10):
-    if gen % 2 == 0:
-        print(next(gen), end=' ')
+    n = 2
+    primes = set()
+    while True:
+        if n in primes:
+            n += 1
+            continue
+        for x in range(2, n):
+            if n % x == 0:
+                break
+        else:
+            primes.add(n)
+            yield n
     
 # Expected output
 

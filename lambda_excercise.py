@@ -2,6 +2,9 @@
 
 #Consider the List
 
+from functools import reduce
+
+
 prog_lang = [('Python', 3.8),
     ('Java', 13),
     ('JavaScript', 2019),
@@ -33,3 +36,8 @@ prog_lang3 = list(map(lambda x: (x[0].lower(), len(x[0])), prog_lang))
 #("All languages separated by commas","All versions separated by commas")
 #('Python,Java,JavaScript,Scala', '3.8,13,2019,2.13')
 prog_lang4 = list(map(lambda x: (','.join(x[0]), ','.join(map(str, str(x[1])))), prog_lang))
+
+#6. Generate a tuple in the form,
+#("All languages separated by commas","All versions separated by commas")
+#('Python,Java,JavaScript,Scala', '3.8,13,2019,2.13')
+prog_lang = reduce(lambda x, y: (x[0] + ',' + y[0], x[1] + ',' + y[1]), prog_lang)
